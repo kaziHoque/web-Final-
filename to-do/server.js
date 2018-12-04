@@ -65,17 +65,25 @@ app.get('/new-task', function(request, response){
 var task = [];
 
 app.post('/task/create', function(request, response){
+  
   var new_task = new Task(request.body);
-  new_task.save(function(err, data){
+  
+            new_task.save(function(err, data){
     if(err)
+      
       return response.status(400)
                     .json({error: "Please input the required fields!"});
+              
+              
     console.log(data);
+              
+              
     return response.status(200)
                     .json({message: "Task successfully created"});
 
   })
 
+  
   console.log(request.body);
   
 });
@@ -87,6 +95,7 @@ app.post('/task/create', function(request, response){
 
 
 app.get('/task/', function(request, response){
+  
   response.render('../list.ejs', {
     tasks:task
   })
@@ -94,10 +103,13 @@ app.get('/task/', function(request, response){
 
 
 article.push({task-name:"Test task 1", priority:2, notes:"task 1 is not funny anymore!!!"});
+
 article.push({task-name:"Test task 2", priority:9, notes:"task 2 is fun"});
 
 app.get('/task/:taskID', function(request, response){
+  
   response.render('../task.ejs', {
+    
     task:task[request.params.taskID]
   })
 });
