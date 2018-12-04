@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <title>NEW REVIEW</title>
   </head>
+  
   <body>
+    
     <h1>NEW REVIEW</h1>
     
     <input type="text" id="task-name" placeholder="REVIEWER NAME" required><br/><br/>
@@ -29,12 +31,20 @@
     <script>
       var task = {reviwer, rating:"", review:""};
       $('#add').click(function(event){
+        
         task.reviwer = $('#reviwer').val();
+        
         task.rating = $('#rating').val();
+        
         task.review = $('#review').val();
+        
+        
         $.ajax({
+          
           method:"POST",
+          
           url:"/task/create",
+          
           data: task
         }).done(function(response){
           console.log(response);
@@ -42,6 +52,7 @@
           console.log(response.responseText);
         });
       });
+      
 
       $('#getTasks').click(function(event){
         $.ajax({
@@ -53,6 +64,8 @@
           console.log(response.responseText);
         });
       });
+      
+      
 
     </script>
   </body>
