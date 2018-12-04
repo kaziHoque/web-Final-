@@ -23,22 +23,22 @@ mongoose.connection.on('error', function(err){
 
 var Schema = mongoose.Schema;
 
-var taskSchema = new Schema({
-  task-name: {
+var reviewSchema = new Schema({
+  review-name: {
     type: String,
-    required: "Task name required"
+    required: "review name required"
   },
   priority: {
     type: Number,
-     required: "Task priority required"
+     required: "review priority required"
   },
   notes: {
     type: String,
-     required: "Task notes required"
+     required: "review notes required"
   }
 });
 
-var Task = mongoose.model('Task', taskSchema)
+var review = mongoose.model('Review', reviewSchema)
 
 
 
@@ -58,17 +58,17 @@ app.get('/about-page', function(request, response){
   response.sendFile(__dirname+'/about.html');
 });
 
-app.get('/new-task', function(request, response){
+app.get('/new-review', function(request, response){
   response.sendFile(__dirname+'/form.html');
 });
 
-var task = [];
+var review = [];
 
-app.post('/task/create', function(request, response){
+app.post('/review/create', function(request, response){
   
-  var new_task = new Task(request.body);
+  var new_review = new Review(request.body);
   
-            new_task.save(function(err, data){
+            new_review.save(function(err, data){
     if(err)
       
       return response.status(400)
@@ -79,7 +79,7 @@ app.post('/task/create', function(request, response){
               
               
     return response.status(200)
-                    .json({message: "Task successfully created"});
+                    .json({message: "review successfully created"});
 
   })
 
@@ -89,28 +89,25 @@ app.post('/task/create', function(request, response){
 });
 
 
-// app.get('/task/list', function(request, response){
-//   return response.status(200).json({tasks: task});
-// })
 
 
-app.get('/task/', function(request, response){
+app.get('/review/', function(request, response){
   
   response.render('../list.ejs', {
-    tasks:task
+    review:review
   })
 });
 
 
-article.push({task-name:"Test task 1", priority:2, notes:"task 1 is not funny anymore!!!"});
+article.push({review-name:"Test review 1", priority:2, notes:"review 1!!!"});
 
-article.push({task-name:"Test task 2", priority:9, notes:"task 2 is fun"});
+article.push({review-name:"Test review 2", priority:9, notes:"review 2"});
 
-app.get('/task/:taskID', function(request, response){
+app.get('/review/:reviewID', function(request, response){
   
-  response.render('../task.ejs', {
+  response.render('../review.ejs', {
     
-    task:task[request.params.taskID]
+    review:review[request.params.reviewID]
   })
 });
 
