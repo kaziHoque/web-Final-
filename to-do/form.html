@@ -9,7 +9,7 @@
     
     <h1>NEW REVIEW</h1>
     
-    <input type="text" id="task-name" placeholder="REVIEWER NAME" required><br/><br/>
+    <input type="text" id="review-name" placeholder="REVIEWER NAME" required><br/><br/>
     
     <textarea id="content" placeholder="RATING (1 TO 10)" required></textarea><br/>
     
@@ -29,23 +29,23 @@
       
       
     <script>
-      var task = {reviwer, rating:"", review:""};
+      var review = {reviwer, rating:"", review:""};
       $('#add').click(function(event){
         
-        task.reviwer = $('#reviwer').val();
+        review.reviwer = $('#reviwer').val();
         
-        task.rating = $('#rating').val();
+        review.rating = $('#rating').val();
         
-        task.review = $('#review').val();
+        review.review = $('#review').val();
         
         
         $.ajax({
           
           method:"POST",
           
-          url:"/task/create",
+          url:"/review/create",
           
-          data: task
+          data: review
         }).done(function(response){
           console.log(response);
         }).fail(function(response){
@@ -54,10 +54,10 @@
       });
       
 
-      $('#getTasks').click(function(event){
+      $('#getReviews').click(function(event){
         $.ajax({
           method:"GET",
-          url:"/task/list"
+          url:"/review/list"
         }).done(function(response){
           console.log(response);
         }).fail(function(response){
