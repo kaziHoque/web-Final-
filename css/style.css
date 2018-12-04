@@ -1,7 +1,10 @@
-.h1{
-    color: pink;
+body {
+    background-color: green;
+    font-style: 'Comic Sans MS';
 }
 
-body {
-    background-color: lightblue;
+
+.h1{
+    color: red;
 }
+
