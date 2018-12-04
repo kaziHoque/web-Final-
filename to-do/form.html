@@ -7,20 +7,19 @@
   <body>
     <h1>NEW REVIEW</h1>
     
-    <input type="text" id="task-name" placeholder="REVIEWER NAME"><br/><br/>
+    <input type="text" id="task-name" placeholder="REVIEWER NAME" required><br/><br/>
     
-    <textarea id="content" placeholder="RATING (1 TO 10)"></textarea><br/>
+    <textarea id="content" placeholder="RATING (1 TO 10)" required></textarea><br/>
     
-    <input type="number" id="priority" name="RATING (1 TO 5)"
-       min="0" max="10" placeholder='PRIORITY (0 TO 10)'><br/>
+    
        
-        <textarea id="notes" placeholder="REVIEW COMMENT"></textarea><br/>
+        <textarea id="notes" placeholder="REVIEW" required></textarea><br/>
     
     
-    <!--submit er jaygay add liksi -->
+    
     <button id="add">Add</button>
     
-    <button id="getArticles">Get all tasks</button>
+    
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -28,11 +27,11 @@
       
       
     <script>
-      var task = {task-name:"", priority:"", notes:""};
+      var task = {reviwer, rating:"", review:""};
       $('#add').click(function(event){
-        task.task-name = $('#task-name').val();
-        task.priority = $('#priority').val();
-        task.notes = $('#notes').val();
+        task.reviwer = $('#reviwer').val();
+        task.rating = $('#rating').val();
+        task.review = $('#review').val();
         $.ajax({
           method:"POST",
           url:"/task/create",
